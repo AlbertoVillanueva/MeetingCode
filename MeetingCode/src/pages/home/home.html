@@ -1,4 +1,4 @@
-<ion-header> 
+<ion-header>
   <ion-navbar>
     <ion-title>Recomendaciones</ion-title>
   </ion-navbar>
@@ -6,46 +6,28 @@
 
 <ion-content padding>
   <!-- List of Text Items -->
-<ion-list>
-  <ion-list-header>
-    <p>Machine Learning</p>
-  </ion-list-header>
-  <ion-item text-wrap>
-    <ion-avatar item-left><img class="projectLogo" src="../../assets/imgs/prueba.jpg"></ion-avatar>
-    <ion-label><h2>Pokémon Yellow</h2><p class="textoLargo">redjedjpedpdfaksdjfñlaksdjfñlkjd añskdfjalksdjfñaldsjkfñlkasdjfñlkadsjfkdñsalm l lkñadsjflaksdjfñkasdmlamla añlsdkfm lalkafmdla  la lkamcdlma </p></ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Mega Man X</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>The Legend of Zelda</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Pac-Man</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Super Mario World</ion-label>
-  </ion-item>
-</ion-list>
-<ion-list>
+  <ion-list>
     <ion-list-header>
-      <p>Juegos</p>
+      <h1>Machine Learning</h1>
     </ion-list-header>
-    <ion-item lines="full">
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
+    <button ion-item *ngFor="let item of proyectosML" (click)="irProyecto()">
+      <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+      <ion-label text-wrap>
+        <h2>{{item.nombre}}</h2>
+        <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+      </ion-label>
+    </button>
   </ion-list>
-
+  <ion-list>
+    <ion-list-header>
+      <h1>Juegos</h1>
+    </ion-list-header>
+    <button ion-item *ngFor="let item of proyectosGames" (click)="irProyecto()">
+      <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+      <ion-label text-wrap>
+        <h2>{{item.nombre}}</h2>
+        <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+      </ion-label>
+    </button>
+  </ion-list>
 </ion-content>

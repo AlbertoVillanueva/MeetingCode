@@ -10,24 +10,31 @@
     <ion-list-header>
       <h1>Machine Learning</h1>
     </ion-list-header>
-    <button ion-item *ngFor="let item of proyectosML" (click)="irProyecto()">
-      <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
-      <ion-label text-wrap>
-        <h2>{{item.nombre}}</h2>
-        <p>{{item.descripcion.substring(0,100) + "..."}}</p>
-      </ion-label>
-    </button>
+    <div *ngFor="let item of proyectos">
+      <button ion-item *ngIf="item.tipo=='Games'" (click)="irProyecto(item.key)">
+        <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+        <ion-label text-wrap>
+          <h2>{{item.nombre}}</h2>
+          <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+        </ion-label>
+      </button>
+    </div>
   </ion-list>
   <ion-list>
     <ion-list-header>
       <h1>Juegos</h1>
     </ion-list-header>
-    <button ion-item *ngFor="let item of proyectosGames" (click)="irProyecto()">
-      <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
-      <ion-label text-wrap>
-        <h2>{{item.nombre}}</h2>
-        <p>{{item.descripcion.substring(0,100) + "..."}}</p>
-      </ion-label>
+    <div *ngFor="let item of proyectos">
+        <button ion-item *ngIf="item.tipo=='ML'" (click)="irProyecto(item.key)">
+          <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+          <ion-label text-wrap>
+            <h2>{{item.nombre}}</h2>
+            <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+          </ion-label>
+        </button>
+      </div>
+    <button ion-buttons (click)="onAddProject()">
+      CARGAR
     </button>
   </ion-list>
 </ion-content>

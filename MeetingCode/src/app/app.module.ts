@@ -10,6 +10,18 @@ import { AyudaPage } from '../pages/ayuda/ayuda';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
+
+export const fireBaseConfig={
+  apiKey: "AIzaSyBzjFJQ1fDmLfoyepXbzqcje-94c_dT5QU",
+  authDomain: "meetingcode-30e56.firebaseapp.com",
+  databaseURL: "https://meetingcode-30e56.firebaseio.com",
+  projectId: "meetingcode-30e56",
+  storageBucket: "meetingcode-30e56.appspot.com",
+  messagingSenderId: "1046821128147"
+};
 
 @NgModule({
   declarations: [
@@ -22,7 +34,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(fireBaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +50,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseDbProvider,
+    FirebaseDbProvider,
+    FirebaseDbProvider
   ]
 })
 export class AppModule {}

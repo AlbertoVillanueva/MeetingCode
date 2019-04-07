@@ -21,13 +21,13 @@ export class MisProyectosPage {
   private texto = "Ahora, un equipo de investigadores de diversas instituciones, entre ellas las universidades de Nueva York y Ottawa (Canadá), descubrió que la exposición al ozono durante largo plazo tiene consecuencias negativas para la salud del ser humano.";
 
 
-  proyectosGames: Proyecto []= [{"nombre":"Pokémon Yellow","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto},
-  {"nombre":"Pokémon Red","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto},
-  {"nombre":"Pokémon Blue","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto}];
+  proyectosGames: Proyecto []= [{"nombre":"Pacman","foto":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/1200px-Pac_Man.svg.png","descripcion":this.texto, "creador":"Paco", "tipo":"ML"},
+  {"nombre":"Pacman Refuerzo","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"ML"},
+  {"nombre":"Clasificacion sencilla","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"ML"}];
 
-  proyectosML: Proyecto []= [{"nombre":"Pokémon Yellow","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto},
-  {"nombre":"Pokémon Red","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto},
-  {"nombre":"Pokémon Blue","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto}];
+  proyectosML: Proyecto []= [{"nombre":"Pokémon Yellow","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games"},
+  {"nombre":"Pokémon Red","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games"},
+  {"nombre":"Pokémon Blue","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games"}];
 
   irProyecto() {
     this.navCtrl.push("ProyectoPage");

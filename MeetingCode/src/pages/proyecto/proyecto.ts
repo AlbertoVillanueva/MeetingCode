@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { keyframes } from '@angular/core/src/animation/dsl';
+import { Proyecto } from '../../models/proyecto.model';
+import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
 
 
 /**
@@ -15,8 +18,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'proyecto.html',
 })
 export class ProyectoPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  proyecto: Proyecto;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider) {
+    let key;
+    key = navParams.get('key');
+    /*En construccion*/
   }
 
   ionViewDidLoad() {

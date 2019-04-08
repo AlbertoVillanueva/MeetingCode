@@ -57,4 +57,8 @@ export class HomePage {
       this.dbFirebase.guardaProyecto(proyecto).then(res=>{})
     }
   }
+
+  goLogin() {
+    this.navCtrl.push("LoginPage");
+  }
 }

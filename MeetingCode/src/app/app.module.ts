@@ -7,12 +7,22 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { BusquedaPage } from '../pages/busqueda/busqueda';
 import { MisProyectosPage } from '../pages/mis-proyectos/mis-proyectos';
 import { AyudaPage } from '../pages/ayuda/ayuda';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../services/auth.service';
+import { FormsModule }   from '@angular/forms';
+
+import { LoginPage } from '../pages/login/login';
+import { LoginPageModule } from '../pages/login/login.module';
+import { SignupPageModule } from '../pages/signup/signup.module';
+import { SignupPage } from '../pages/signup/signup';
+
+/*https://medium.com/appseed-io/integrating-firebase-password-and-google-authentication-into-your-ionic-3-app-2421cee32db9*/
+
 
 export const fireBaseConfig={
   apiKey: "AIzaSyBzjFJQ1fDmLfoyepXbzqcje-94c_dT5QU",
@@ -36,7 +46,10 @@ export const fireBaseConfig={
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(fireBaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    LoginPageModule,
+    SignupPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,15 +58,17 @@ export const fireBaseConfig={
     TabsPage,
     BusquedaPage,
     MisProyectosPage,
-    AyudaPage
+    AyudaPage,
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseDbProvider,
-    FirebaseDbProvider,
-    FirebaseDbProvider
+    AngularFireAuth,
+    AuthService
   ]
 })
 export class AppModule {}

@@ -29,30 +29,6 @@ export class FirebaseDbProvider {
 
   getProyecto(key:String) {
     /*En construcción */
-    /*
-    let proyecto:Proyecto;
-    var nombre: String;
-    var foto: String;
-    var descripcion: String;
-    var creador:String;
-    var tipo:String;
-
-    this.afDB.database.ref('proyectos/'+key).once('value').then(function(snapshot) {
-      console.log("proyecto: " + snapshot.val().key);
-      nombre = snapshot.val().nombre;
-      foto = snapshot.val().foto;
-      descripcion = snapshot.val().descripcion;
-      creador = snapshot.val().creador;
-      tipo = snapshot.val().tipo;
-    });
-    console.log(proyecto);
-    proyecto.key = key;
-    proyecto.nombre = nombre;
-    proyecto.foto = foto;
-    proyecto.descripcion = descripcion;
-    proyecto.creador = creador;
-    proyecto.tipo = tipo;
-
-    return proyecto;*/
+    return this.afDB.database.ref('proyectos/'+key).once('value');   
   }
 }

@@ -25,9 +25,14 @@ export class ProyectoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider) {
     let key;
     key = navParams.get('key');
-    dbFirebase.getProyecto(key).then(function(snapshot) {
+    dbFirebase.getProyecto(key).then(x=> {
       /*EN CONSTRUCCION*/ 
-      console.log("proyecto: " + snapshot.val().key);
+      console.log("proyecto: " + x.val().key);
+      this.nombre = x.val().nombre;
+      this.foto = x.val().foto;
+      this.descripcion = x.val().descripcion;
+      this.creador = x.val().creador;
+      this.tipo = x.val().tipo;
       /*
       this.nombre = snapshot.val().nombre;
       this.foto = snapshot.val().foto;

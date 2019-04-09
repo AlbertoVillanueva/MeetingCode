@@ -11,22 +11,22 @@
 </ion-header>
 
 <ion-content padding>
-    <!-- List of Text Items -->
-    <ion-list>
-      <button ion-item *ngFor="let item of proyectosML" (click)="irProyecto()">
-        <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
-        <ion-label text-wrap>
-          <h2>{{item.nombre}}</h2>
-          <p>{{item.descripcion.substring(0,100) + "..."}}</p>
-        </ion-label>
-      </button>
-      <button ion-item *ngFor="let item of proyectosGames" (click)="irProyecto()">
-        <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
-        <ion-label text-wrap>
-          <h2>{{item.nombre}}</h2>
-          <p>{{item.descripcion.substring(0,100) + "..."}}</p>
-        </ion-label>
-      </button>
-    </ion-list>
+  <!-- List of Text Items -->
+  <ion-list>
+    <!-- Este div externo es temporal -->
+    <div *ngIf="auth.authenticated">
+      <div *ngFor="let item of proyectos">
+        <button ion-item (click)="irProyecto(item.key)" *ngIf="item.creadorID == auth.getEmail()">
+          <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+          <ion-label text-wrap>
+            <h2>{{item.nombre}}</h2>
+            <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+          </ion-label>
+        </button>
+      </div>
+    </div>
+
+
+  </ion-list>
 
 </ion-content>

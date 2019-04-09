@@ -5,6 +5,7 @@ export class Proyecto {
     public descripcion: String;
     public creador:String;
     public tipo:String;
+    public creadorID:String;
     
     constructor() {
         this.key="";

@@ -23,11 +23,10 @@ export class HomePage {
   private texto = "Ahora, un equipo de investigadores de diversas instituciones, entre ellas las universidades de Nueva York y Ottawa (Canadá), descubrió que la exposición al ozono durante largo plazo tiene consecuencias negativas para la salud del ser humano.";
 
   
-  proyectosML: Proyecto []= [{"nombre":"Pacman","foto":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/1200px-Pac_Man.svg.png","descripcion":this.texto, "creador":"Paco", "tipo":"ML", "creadorID":"jcorrochano98@gmail.com"},
+  proyectosPreCarga: Proyecto []= [{"nombre":"Pacman","foto":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/1200px-Pac_Man.svg.png","descripcion":this.texto, "creador":"Paco", "tipo":"ML", "creadorID":"jcorrochano98@gmail.com"},
   {"nombre":"Pacman Refuerzo","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"ML", "creadorID":"jcorrochano98@gmail.com"},
-  {"nombre":"Clasificacion sencilla","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"ML", "creadorID":"jcorrochano98@gmail.com"}];
-
-  proyectosGames: Proyecto []= [{"nombre":"Pokémon Yellow","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games", "creadorID":"jcorrochano99@gmail.com"},
+  {"nombre":"Clasificacion sencilla","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"ML", "creadorID":"jcorrochano98@gmail.com"},
+  {"nombre":"Pokémon Yellow","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games", "creadorID":"jcorrochano99@gmail.com"},
   {"nombre":"Pokémon Red","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games", "creadorID":"jcorrochano99@gmail.com"},
   {"nombre":"Pokémon Blue","foto":"../../assets/imgs/prueba.jpg","descripcion":this.texto, "creador":"Paco", "tipo":"Games", "creadorID":"jcorrochano99@gmail.com"}];
 
@@ -39,7 +38,7 @@ export class HomePage {
 
   onAddProject() {
     let proyecto:Proyecto=new Proyecto();
-    for(let value of this.proyectosML) {
+    for(let value of this.proyectosPreCarga) {
       
       proyecto.key = ""+ Date.now();
       proyecto.nombre = value.nombre;
@@ -48,17 +47,7 @@ export class HomePage {
       proyecto.tipo = value.tipo;
       proyecto.creador = value.creador;
       proyecto.creadorID = value.creadorID;
-      this.dbFirebase.guardaProyecto(proyecto).then(res=>{})
-    }
-    for(let value of this.proyectosGames) {
-      
-      proyecto.key = ""+ Date.now();
-      proyecto.nombre = value.nombre;
-      proyecto.foto = value.foto;
-      proyecto.descripcion = value.descripcion;
-      proyecto.tipo = value.tipo;
-      proyecto.creador = value.creador;
-      proyecto.creadorID = value.creadorID;
+      proyecto.aplicantes = [""];
       this.dbFirebase.guardaProyecto(proyecto).then(res=>{})
     }
   }

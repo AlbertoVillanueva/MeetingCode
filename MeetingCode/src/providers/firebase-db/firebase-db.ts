@@ -21,6 +21,11 @@ export class FirebaseDbProvider {
     }
     return this.afDB.database.ref('proyectos/'+proyecto.key).set(proyecto);
   }
+
+  actualizaProyecto(proyecto:Proyecto) {
+    return this.afDB.database.ref('proyectos/'+proyecto.key).update(proyecto);
+  }
+  
   private proyectos=this.afDB.list<Proyecto>('proyectos');
 
   getProyectos() {

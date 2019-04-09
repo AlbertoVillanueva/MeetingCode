@@ -4,18 +4,18 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <div class="logoProyecto"><img src={{foto}}></div>
+  <div class="logoProyecto"><img src={{proyecto.foto}}></div>
   <div class="cabecera">
-    <h4>{{nombre}}</h4>
-    <p>{{creador}}</p>
+    <h4>{{proyecto.nombre}}</h4>
+    <p>{{proyecto.creador}}</p>
   </div>
   <br>
-  <p class="parrafoDescripcion">{{descripcion}}
+  <p class="parrafoDescripcion">{{proyecto.descripcion}}
 </p>
   
 </ion-content>
 <ion-footer >
-    <button ion-button full type="submit" class="buttonApply">Aplicar</button>
+    <button ion-button full type="submit" class="buttonApply" (click)="addAplicante()">Aplicar</button>
   </ion-footer>
 
  

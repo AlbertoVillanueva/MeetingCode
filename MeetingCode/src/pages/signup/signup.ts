@@ -13,7 +13,6 @@ import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
 export class SignupPage {
 	signupError: string;
 	form: FormGroup;
-	usuario:Usuario;
 
 	constructor(
 		fb: FormBuilder,
@@ -21,7 +20,6 @@ export class SignupPage {
 		private auth: AuthService,
 		public dbFirebase: FirebaseDbProvider
 	) {
-		this.usuario = new Usuario();
 		this.form = fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -30,22 +28,20 @@ export class SignupPage {
 		});
   }
 
-	registrarUsuario() {
-		let data = this.form.value;
-		this.usuario.nombre = data.nombre;
-		this.usuario.aptitudes = data.aptitudes;
-		this.usuario.email = data.email;
-		this.signup(this.usuario);
-	}
-  signup(usuario:Usuario) {
+  signup() {
 		let data = this.form.value;
 		let credentials = {
 			email: data.email,
 			password: data.password
 		};
+		let usuario:Usuario;
+		usuario = new Usuario();
+
+		usuario.nombre = data.nombre;
+		usuario.aptitudes = data.aptitudes;
 	
-		this.auth.signUp(credentials).then(
-			() => {this.navCtrl.setRoot(HomePage); this.dbFirebase.guardaUsuario(usuario);},
+		this.auth.signUp(credentials, usuario).then(
+			() => this.navCtrl.setRoot(HomePage),
 			error => this.signupError = error.message
 		);
 }

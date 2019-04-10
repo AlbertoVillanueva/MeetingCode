@@ -43,11 +43,11 @@ export class ProyectoPage {
   addAplicante() {
     if(this.auth.authenticated) {
       console.log(this.auth.getEmail());
-      if(this.proyecto.aplicantes.indexOf(this.auth.getEmail()) == -1) {
+      if(this.proyecto.aplicantes.indexOf(this.auth.getUid()) == -1) {
         if(this.proyecto.aplicantes[0] == "")
-          this.proyecto.aplicantes[0]= this.auth.getEmail();
+          this.proyecto.aplicantes[0]= this.auth.getUid();
         else
-          this.proyecto.aplicantes.push(this.auth.getEmail());
+          this.proyecto.aplicantes.push(this.auth.getUid());
 
         this.dbFirebase.actualizaProyecto(this.proyecto);
       } else {
@@ -58,6 +58,16 @@ export class ProyectoPage {
       console.log("No autenticado");
     }
     
+  }
+
+  desaplicar() {
+    if(this.proyecto.aplicantes.length == 1) {
+      this.proyecto.aplicantes[0] = "";
+    } else{
+      let indice = this.proyecto.aplicantes.indexOf(this.auth.getUid());
+      this.proyecto.aplicantes.splice(indice);
+    }
+    this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
   irALogin() {

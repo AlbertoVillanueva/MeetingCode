@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import AuthProvider = firebase.auth.AuthProvider;
+import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
 
 @Injectable()
 export class AuthService {
     private user: firebase.User;
-
-    constructor(public afAuth: AngularFireAuth) {
+    
+    constructor(public afAuth: AngularFireAuth, public dbFirebase: FirebaseDbProvider) {
         afAuth.authState.subscribe(user => {
             this.user = user;
         });
@@ -19,8 +19,10 @@ export class AuthService {
             credentials.password);
     }
 
-    signUp(credentials) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
+    signUp(credentials, usuario) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password).then(
+            () => {usuario.key =  this.afAuth.auth.currentUser.uid; this.dbFirebase.guardaUsuario(usuario)}
+        );
     }
     get authenticated(): boolean {
         return this.user !== null;
@@ -28,6 +30,10 @@ export class AuthService {
     }
     getEmail() {
         return this.user && this.user.email;
+    }
+
+    getUid() {
+        return this.user && this.user.uid;
     }
 
     signOut(): Promise<void> {

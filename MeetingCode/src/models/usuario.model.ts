@@ -1,8 +1,8 @@
 export class Usuario {
-    public email:String;
     public nombre:String;
     public aptitudes:String;
-
+    public key?:String;
+    
     constructor() {
     }
     

@@ -38,10 +38,10 @@ export class FirebaseDbProvider {
   }
 
   guardaUsuario(usuario:Usuario) {
-    return this.afDB.database.ref('usuarios/'+usuario.email).set(usuario);
+    return this.afDB.database.ref('usuarios/'+usuario.key).set(usuario);
   }
 
-  getUsuario(email:String) {
-    return this.afDB.database.ref('usuarios/'+email).once('value');
+  getUsuario(key:String) {
+    return this.afDB.database.ref('usuarios/'+key).once('value');
   }
 }

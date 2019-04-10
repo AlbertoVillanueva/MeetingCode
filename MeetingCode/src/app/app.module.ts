@@ -20,6 +20,11 @@ import { LoginPage } from '../pages/login/login';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { SignupPage } from '../pages/signup/signup';
+import { AplicantePage } from '../pages/aplicante/aplicante';
+import { AplicantePageModule } from '../pages/aplicante/aplicante.module';
+import { ListaAplicantesPage } from '../pages/lista-aplicantes/lista-aplicantes';
+import { ListaAplicantesPageModule } from '../pages/lista-aplicantes/lista-aplicantes.module';
+
 
 /*https://medium.com/appseed-io/integrating-firebase-password-and-google-authentication-into-your-ionic-3-app-2421cee32db9*/
 
@@ -49,7 +54,9 @@ export const fireBaseConfig={
     AngularFireDatabaseModule,
     FormsModule,
     LoginPageModule,
-    SignupPageModule
+    SignupPageModule,
+    AplicantePageModule,
+    ListaAplicantesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,7 +67,9 @@ export const fireBaseConfig={
     MisProyectosPage,
     AyudaPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    AplicantePage,
+    ListaAplicantesPage
   ],
   providers: [
     StatusBar,

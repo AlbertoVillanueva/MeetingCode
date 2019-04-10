@@ -1,0 +1,49 @@
+<!--
+  Generated template for the ListaAplicantesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Lista de Aplicantes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item text-wrap>
+      <button ion-item class="nameAptitude" (click)="irAplicante()">
+        <div>
+          <h3>Nombre</h3>
+          <p>Mi lenguaje favorito es Forth, eso de que funcione como una pila es impresionante.</p>
+        </div>
+      </button>
+      <div class="trash">
+        <ion-buttons>
+          <ion-icon name="trash"></ion-icon>
+        </ion-buttons>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <div *ngFor="let item of usuarios">
+      <div *ngIf="proyecto.aplicantes.indexOf(item.key) != -1">
+        <ion-item text-wrap>
+          <button ion-item class="nameAptitude" (click)="irAplicante(item)">
+            <div>
+              <h3>{{item.nombre}}</h3>
+              <p>{{item.aptitudes}}</p>
+            </div>
+          </button>
+          <div class="trash">
+            <ion-buttons>
+              <ion-icon name="trash"></ion-icon>
+            </ion-buttons>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

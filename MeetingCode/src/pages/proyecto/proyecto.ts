@@ -20,13 +20,6 @@ import { Proyecto } from '../../models/proyecto.model';
 export class ProyectoPage {
   proyecto:Proyecto;
 
-  nombre: String;
-  foto: String;
-  descripcion: String;
-  creador:String;
-  tipo:String;
-  aplicantes: Array<String> = [];
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
     let key;
     key = navParams.get('key');
@@ -44,11 +37,7 @@ export class ProyectoPage {
     if(this.auth.authenticated) {
       console.log(this.auth.getEmail());
       if(this.proyecto.aplicantes.indexOf(this.auth.getUid()) == -1) {
-        if(this.proyecto.aplicantes[0] == "")
-          this.proyecto.aplicantes[0]= this.auth.getUid();
-        else
-          this.proyecto.aplicantes.push(this.auth.getUid());
-
+        this.proyecto.aplicantes.push(this.auth.getUid());
         this.dbFirebase.actualizaProyecto(this.proyecto);
       } else {
         console.log("Error por pantalla de que ya has aplicado")
@@ -57,21 +46,23 @@ export class ProyectoPage {
       /*EN CONSTRUCCION*/ 
       console.log("No autenticado");
     }
-    
   }
 
   desaplicar() {
-    if(this.proyecto.aplicantes.length == 1) {
-      this.proyecto.aplicantes[0] = "";
-    } else{
-      let indice = this.proyecto.aplicantes.indexOf(this.auth.getUid());
-      this.proyecto.aplicantes.splice(indice);
+    let indice = this.proyecto.aplicantes.indexOf(this.auth.getUid());
+    if(indice != -1) {
+      this.proyecto.aplicantes.splice(indice,1);
     }
+    
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
   irALogin() {
     this.navCtrl.push("LoginPage");
+  }
+
+  irAListaAplicantes(proyecto) {
+    this.navCtrl.push("ListaAplicantesPage", {proyecto : proyecto});
   }
 
 }

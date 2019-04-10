@@ -28,6 +28,7 @@ export class FirebaseDbProvider {
   }
   
   private proyectos=this.afDB.list<Proyecto>('proyectos');
+  private usuarios = this.afDB.list<Usuario>('usuarios');
 
   getProyectos() {
     return this.proyectos.valueChanges();
@@ -39,6 +40,10 @@ export class FirebaseDbProvider {
 
   guardaUsuario(usuario:Usuario) {
     return this.afDB.database.ref('usuarios/'+usuario.key).set(usuario);
+  }
+
+  getUsuarios() {
+    return this.usuarios.valueChanges();
   }
 
   getUsuario(key:String) {

@@ -7,15 +7,34 @@
   <div class="logoProyecto"><img src={{proyecto.foto}}></div>
   <div class="cabecera">
     <h4>{{proyecto.nombre}}</h4>
-    <p>{{proyecto.creador}}</p>
+    <div *ngIf="proyecto.creadorID == auth.getEmail(); then creador else otro"></div>
+    <ng-template #creador>
+      <button ion-button type="submit" class="buttonApply">Aplicantes</button>
+    </ng-template>
+    <ng-template #otro>
+      <p>{{proyecto.creador}}</p>
+    </ng-template>
   </div>
   <br>
   <p class="parrafoDescripcion">{{proyecto.descripcion}}
-</p>
-  
-</ion-content>
-<ion-footer >
-    <button ion-button full type="submit" class="buttonApply" (click)="addAplicante()">Aplicar</button>
-  </ion-footer>
+  </p>
 
- 
+</ion-content>
+<ion-footer>
+  <div *ngIf="auth.authenticated;then content else other_content"></div>
+  <ng-template #content>
+    <div *ngIf="proyecto.creadorID != auth.getEmail()">
+      <div *ngIf="proyecto.aplicantes.indexOf(auth.getEmail()) == -1; then content1 else content2"></div>
+      <ng-template #content1>
+        <button ion-button full type="submit" class="buttonApply" (click)="addAplicante()">Aplicar</button>
+      </ng-template>
+
+      <ng-template #content2>
+        <button ion-button full type="submit" class="buttonApply">Aplicado</button>
+      </ng-template>
+    </div>
+  </ng-template>
+  <ng-template #other_content>
+    <button ion-button full type="submit" class="buttonApply" (click)="irALogin()">Iniciar sesion para aplicar</button>
+  </ng-template>
+</ion-footer>

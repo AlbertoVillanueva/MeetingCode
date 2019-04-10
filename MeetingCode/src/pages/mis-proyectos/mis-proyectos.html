@@ -8,13 +8,26 @@
   <ion-navbar>
     <ion-title>Mis proyectos</ion-title>
   </ion-navbar>
+  <div *ngIf="auth.authenticated">
+    <ion-item>
+      <div *ngIf="auth.getEmail()">{{auth.getEmail()}}</div>
+      <button ion-button color="light" item-end (click)="logout()" *ngIf="auth.authenticated">
+        <ion-icon name="log-out" item-left></ion-icon>
+        Log out
+      </button>
+    </ion-item>
+  </div>
+
 </ion-header>
 
 <ion-content padding>
   <!-- List of Text Items -->
-  <ion-list>
-    <!-- Este div externo es temporal -->
-    <div *ngIf="auth.authenticated">
+  <div *ngIf="auth.authenticated; then content else otherContent"></div>
+  <ng-template #content>
+    <ion-list>
+      <ion-list-header>
+        <h1>Mis proyectos</h1>
+      </ion-list-header>
       <div *ngFor="let item of proyectos">
         <button ion-item (click)="irProyecto(item.key)" *ngIf="item.creadorID == auth.getEmail()">
           <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
@@ -24,9 +37,42 @@
           </ion-label>
         </button>
       </div>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <h1>Aplicado</h1>
+      </ion-list-header>
+      <div *ngFor="let item of proyectos">
+        <button ion-item (click)="irProyecto(item.key)" *ngIf="item.aplicantes.indexOf(auth.getEmail()) != -1">
+          <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+          <ion-label text-wrap>
+            <h2>{{item.nombre}}</h2>
+            <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+          </ion-label>
+        </button>
+      </div>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <h1>Colaborador</h1>
+      </ion-list-header>
+      <div *ngFor="let item of proyectos">
+        <button ion-item (click)="irProyecto(item.key)" *ngIf="item.colaboradores.indexOf(auth.getEmail()) != -1">
+          <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+          <ion-label text-wrap>
+            <h2>{{item.nombre}}</h2>
+            <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+          </ion-label>
+        </button>
+      </div>
+    </ion-list>
+  </ng-template>
+  <ng-template #otherContent>
+    <div class="middleVertical">
+      <h3 class = "centrado">Para visualizar esta página es necesario iniciar sesión.</h3>
+      <button ion-button full type="submit" class="buttonSignIn" (click)="goLogin()">Iniciar sesion</button>
     </div>
-
-
-  </ion-list>
-
+  </ng-template>
 </ion-content>

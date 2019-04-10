@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Proyecto } from '../../models/proyecto.model';
+import { Usuario } from '../../models/usuario.model';
 
 /*
   Generated class for the FirebaseDbProvider provider.
@@ -33,7 +34,14 @@ export class FirebaseDbProvider {
   }
 
   getProyecto(key:String) {
-    /*En construcción */
     return this.afDB.database.ref('proyectos/'+key).once('value');   
+  }
+
+  guardaUsuario(usuario:Usuario) {
+    return this.afDB.database.ref('usuarios/'+usuario.email).set(usuario);
+  }
+
+  getUsuario(email:String) {
+    return this.afDB.database.ref('usuarios/'+email).once('value');
   }
 }

@@ -7,6 +7,7 @@ export class Proyecto {
     public tipo:String;
     public creadorID:String;
     public aplicantes?: Array<String> = [];
+    public colaboradores?: Array<String> = [];
 
     constructor() {
         this.key="";

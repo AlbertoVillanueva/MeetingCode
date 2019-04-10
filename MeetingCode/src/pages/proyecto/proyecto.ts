@@ -60,4 +60,8 @@ export class ProyectoPage {
     
   }
 
+  irALogin() {
+    this.navCtrl.push("LoginPage");
+  }
+
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
 import { AuthService } from '../../services/auth.service';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the MisProyectosPage page.
@@ -32,4 +33,12 @@ export class MisProyectosPage {
     this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos });
   }
 
+  goLogin() {
+    this.auth.signOut();
+    this.navCtrl.push("LoginPage");
+  }
+
+  logout() {
+    this.auth.signOut();
+  }
 }

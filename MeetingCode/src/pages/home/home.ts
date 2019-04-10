@@ -48,6 +48,7 @@ export class HomePage {
       proyecto.creador = value.creador;
       proyecto.creadorID = value.creadorID;
       proyecto.aplicantes = [""];
+      proyecto.colaboradores = [""];
       this.dbFirebase.guardaProyecto(proyecto).then(res=>{})
     }
   }

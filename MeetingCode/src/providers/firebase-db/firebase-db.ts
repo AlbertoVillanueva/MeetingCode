@@ -27,6 +27,9 @@ export class FirebaseDbProvider {
     return this.afDB.database.ref('proyectos/'+proyecto.key).update(proyecto);
   }
   
+  borrarProyectos(){
+    return this.afDB.database.ref('proyectos').set(null);
+  }
   private proyectos=this.afDB.list<Proyecto>('proyectos');
   private usuarios = this.afDB.list<Usuario>('usuarios');
 

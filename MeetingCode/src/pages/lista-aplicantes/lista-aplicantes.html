@@ -11,22 +11,20 @@
 </ion-header>
 
 <ion-content padding>
-<ion-list style="border-bottom: none;  box-shadow: none; ">
+<ion-list>
     <div *ngFor="let item of usuarios">
       <div *ngIf="proyecto.aplicantes.indexOf(item.key) != -1">
         <ion-item text-wrap >
           <div class="container">
             <button ion-item no-lines class="nameAptitude" (click)="irAplicante(item)" >
-              <div>
+              <div style="padding-top:1px">
                 <h3>{{item.nombre}}</h3>
                 <p>{{item.aptitudes.substring(0,100) + "..."}}</p>
               </div>
             </button>
-            <div class="trash">
-              <ion-buttons>
+            <button ion-button (click) = "desaplicar(item.key)" color="blanco" class="trash">
                 <ion-icon name="trash"></ion-icon>
-              </ion-buttons>
-            </div>
+            </button>
         </div>
         </ion-item>
       </div>

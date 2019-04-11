@@ -52,4 +52,13 @@ export class ListaAplicantesPage {
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
+  desaplicar(key) {
+    let indice = this.proyecto.aplicantes.indexOf(key);
+    if(indice != -1) {
+      this.proyecto.aplicantes.splice(indice,1);
+    }
+    
+    this.dbFirebase.actualizaProyecto(this.proyecto);
+  }
+
 }

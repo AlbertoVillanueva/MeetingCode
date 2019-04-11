@@ -11,14 +11,29 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
-        <!-- Este div externo es temporal -->
-            <button ion-item>
-              <ion-avatar item-left><img class="projectLogo"></ion-avatar>
-              <ion-label text-wrap>
-                <h2>Nombre</h2>
-                <p>Hola</p>
-              </ion-label>
-            </button>
-      </ion-list>
+  <ion-list>
+    <!-- Este div externo es temporal -->
+    <div *ngIf="this.query != null">
+      <div *ngFor="let item of proyectos">
+        <button ion-item *ngIf="item.nombre.toLowerCase().search(this.query.toLowerCase()) != -1 || item.descripcion.toLowerCase().search(this.query.toLowerCase()) != -1" (click)="irProyecto(item.key)">
+          <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+          <ion-label text-wrap>
+            <h2>{{item.nombre}}</h2>
+            <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+          </ion-label>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="this.tipo != null">
+        <div *ngFor="let item of proyectos">
+          <button ion-item *ngIf="item.tipo==tipo" (click)="irProyecto(item.key)">
+            <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
+            <ion-label text-wrap>
+              <h2>{{item.nombre}}</h2>
+              <p>{{item.descripcion.substring(0,100) + "..."}}</p>
+            </ion-label>
+          </button>
+        </div>
+      </div>
+  </ion-list>
 </ion-content>

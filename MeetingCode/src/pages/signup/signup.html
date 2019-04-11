@@ -14,7 +14,7 @@
 			</ion-item>
 
 			<div ngxErrors="email" #emailErrors="ngxErrors">
-				<div [ngxError]="['email', 'required']" [when]="['touched']">Debe ser un email válido</div>
+				<div [ngxError]="['email', 'required']" [when]="['touched']">Debe ser un email valido, ejemplo: ejemplo@gmail.com</div>
 			</div>
 
 			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
@@ -22,16 +22,22 @@
 			</ion-item>
 
 			<div ngxErrors="password" #passwordErrors="ngxErrors">
-				<div [ngxError]="['minlength', 'required']" [when]="['touched']">Deben ser al menos 6 caracteres</div>
+				<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como mínimo 6 caracteres</div>
 			</div>
 
 			<ion-item>
 				<ion-input type="text" placeholder="Nombre" formControlName="nombre"></ion-input>
 			</ion-item>
+			<div ngxErrors="nombre">
+				<div [ngxError]="['required']" [when]="['touched']">Debe indicar un nombre para el registro</div>
+			</div>
 
 			<ion-item>
-				<ion-input type="text" placeholder="¿Cuáles son tus aptitudes?" formControlName="aptitudes"></ion-input>
+				<ion-textarea type="text" placeholder="¿Cuáles son tus aptitudes?" formControlName="aptitudes" size="40"></ion-textarea>
 			</ion-item>
+			<div ngxErrors="aptitudes">
+				<div [ngxError]="['required']" [when]="['touched']">Debe incluir una descripción con sus aptitudes</div>
+			</div>
 		</ion-list>
 
 		<div padding-horizontal>

@@ -12,11 +12,7 @@ export class HomePage {
   proyectos:any;
   
   constructor(public navCtrl: NavController, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
-
-  }
-
-  ionViewWillEnter() {
-    this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos });
+    this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos;});
   }
 
   irProyecto(key) {

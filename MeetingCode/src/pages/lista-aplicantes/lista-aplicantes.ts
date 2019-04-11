@@ -18,19 +18,23 @@ import { Proyecto } from '../../models/proyecto.model';
 export class ListaAplicantesPage {
   proyecto:Proyecto;
   usuarios:any;
+  private observable:any;
 
   /*Parametros de pop*/
   user:String;
   operation:String;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider) {
-    this.proyecto = new Proyecto();
-    this.proyecto = navParams.get("proyecto");
+    this.dbFirebase.getUsuarios().subscribe(listaUsuarios => { this.usuarios = listaUsuarios;});
+    let key = navParams.get('key');
+    console.log(navParams.data);
+    this.observable = dbFirebase.afDB.object('proyectos/'+key).valueChanges();
+    console.log(this.observable);
+    this.observable.subscribe(x => {this.proyecto = x; console.log(this.proyecto);});
   }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaAplicantesPage');
-    this.dbFirebase.getUsuarios().subscribe(listaUsuarios => { this.usuarios = listaUsuarios;});
   }
   public ionViewWillEnter() {
     this.user = this.navParams.get('user')|| null;

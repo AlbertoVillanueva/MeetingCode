@@ -22,14 +22,11 @@ export class ResultadosPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider) {
     this.query = this.navParams.get('query');
     this.tipo = this.navParams.get('tipo');
+    this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos; });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultadosPage');
-  }
-
-  ionViewWillEnter() {
-    this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos; });
   }
 
   irProyecto(key) {

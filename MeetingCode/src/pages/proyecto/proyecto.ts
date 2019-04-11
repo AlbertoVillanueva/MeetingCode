@@ -17,13 +17,13 @@ import { Proyecto } from '../../models/proyecto.model';
   templateUrl: 'proyecto.html',
 })
 export class ProyectoPage {
-  proyecto:Proyecto;
-  private observable:any;
+  proyecto: Proyecto;
+  private observable: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
     let key = navParams.get('key');
-    this.observable = dbFirebase.afDB.object('proyectos/'+key).valueChanges();
-    this.observable.subscribe(x => {this.proyecto = x;});
+    this.observable = dbFirebase.afDB.object('proyectos/' + key).valueChanges();
+    this.observable.subscribe(x => { this.proyecto = x; });
   }
 
   ionViewDidLoad() {
@@ -31,14 +31,14 @@ export class ProyectoPage {
   }
 
   addAplicante() {
-    if(this.auth.authenticated) {
+    if (this.auth.authenticated) {
       console.log(this.auth.getEmail());
-      if(this.proyecto.aplicantes.indexOf(this.auth.getUid()) == -1) {
+      if (this.proyecto.aplicantes.indexOf(this.auth.getUid()) == -1) {
         this.proyecto.aplicantes.push(this.auth.getUid());
         this.dbFirebase.actualizaProyecto(this.proyecto);
       } else {
         console.log("Error por pantalla de que ya has aplicado")
-      }     
+      }
     } else {
       console.log("No autenticado");
     }
@@ -46,19 +46,19 @@ export class ProyectoPage {
 
   desaplicar() {
     let indice = this.proyecto.aplicantes.indexOf(this.auth.getUid());
-    if(indice != -1) {
-      this.proyecto.aplicantes.splice(indice,1);
+    if (indice != -1) {
+      this.proyecto.aplicantes.splice(indice, 1);
     }
-    
+
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
   descolaborar() {
     let indice = this.proyecto.colaboradores.indexOf(this.auth.getUid());
-    if(indice != -1) {
-      this.proyecto.colaboradores.splice(indice,1);
+    if (indice != -1) {
+      this.proyecto.colaboradores.splice(indice, 1);
     }
-    
+
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
@@ -67,7 +67,7 @@ export class ProyectoPage {
   }
 
   irAListaAplicantes(key) {
-    this.navCtrl.push("ListaAplicantesPage", {key: key});
+    this.navCtrl.push("ListaAplicantesPage", { key: key });
   }
 
 }

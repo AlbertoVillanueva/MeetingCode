@@ -16,7 +16,7 @@ export class SignupPage {
 
 	constructor(
 		fb: FormBuilder,
-    private navCtrl: NavController,
+		private navCtrl: NavController,
 		private auth: AuthService,
 		public dbFirebase: FirebaseDbProvider
 	) {
@@ -26,23 +26,23 @@ export class SignupPage {
 			nombre: ['', Validators.compose([Validators.required])],
 			aptitudes: ['', Validators.compose([Validators.required])]
 		});
-  }
+	}
 
-  signup() {
+	signup() {
 		let data = this.form.value;
 		let credentials = {
 			email: data.email,
 			password: data.password
 		};
-		let usuario:Usuario;
+		let usuario: Usuario;
 		usuario = new Usuario();
 
 		usuario.nombre = data.nombre;
 		usuario.aptitudes = data.aptitudes;
-	
+
 		this.auth.signUp(credentials, usuario).then(
 			() => this.navCtrl.setRoot(HomePage),
 			error => this.signupError = error.message
 		);
-}
+	}
 }

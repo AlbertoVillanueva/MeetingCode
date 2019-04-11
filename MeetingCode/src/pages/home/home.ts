@@ -9,10 +9,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomePage {
 
-  proyectos:any;
-  
+  proyectos: any;
+
   constructor(public navCtrl: NavController, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
-    this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos;});
+    this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos; });
   }
 
   irProyecto(key) {

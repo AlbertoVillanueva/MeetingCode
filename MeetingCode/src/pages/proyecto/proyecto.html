@@ -10,7 +10,8 @@
       <h4>{{proyecto.nombre}}</h4>
       <div *ngIf="proyecto.creadorID == auth.getEmail(); then creador else otro"></div>
       <ng-template #creador>
-        <button ion-button type="submit" class="buttonApply" (click)="irAListaAplicantes(proyecto.key)">Aplicantes</button>
+        <button ion-button type="submit" class="buttonApply"
+          (click)="irAListaAplicantes(proyecto.key)">Aplicantes</button>
       </ng-template>
       <ng-template #otro>
         <p>{{proyecto.creador}}</p>

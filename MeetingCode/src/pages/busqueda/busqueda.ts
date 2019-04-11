@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'busqueda.html',
 })
 export class BusquedaPage {
-  searchQuery:any;
+  searchQuery: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -22,10 +22,10 @@ export class BusquedaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusquedaPage');
   }
-  irResult(){
-    this.navCtrl.push("ResultadosPage", {query:this.searchQuery});
+  irResult() {
+    this.navCtrl.push("ResultadosPage", { query: this.searchQuery });
   }
   irResultTipo(tipo) {
-    this.navCtrl.push("ResultadosPage", {tipo:tipo});
+    this.navCtrl.push("ResultadosPage", { tipo: tipo });
   }
 }

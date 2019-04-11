@@ -41,10 +41,10 @@ export class LoginPage {
         error => this.loginError = error.message
       );
   }
-  goSignup(){
+  goSignup() {
     this.navCtrl.push(SignupPage);
   }
-  /*
+  /* 
   loginWithGoogle() {
     this.auth.signInWithGoogle()
       .then(

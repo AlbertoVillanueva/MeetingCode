@@ -5,12 +5,12 @@
   <ion-item>
     <div *ngIf="auth.getEmail()">{{auth.getEmail()}}</div>
     <button ion-button color="light" item-end (click)="logout()" *ngIf="auth.authenticated">
-        <ion-icon name="log-out" item-left></ion-icon>
-        Log out
+      <ion-icon name="log-out" item-left></ion-icon>
+      Log out
     </button>
     <button ion-button color="light" item-end (click)="goLogin()" *ngIf="!auth.authenticated">
-        <ion-icon name="log-in" item-left></ion-icon>
-        Log in
+      <ion-icon name="log-in" item-left></ion-icon>
+      Log in
     </button>
   </ion-item>
 </ion-header>

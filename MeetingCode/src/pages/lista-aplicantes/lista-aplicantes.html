@@ -11,37 +11,23 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item text-wrap>
-      <button ion-item class="nameAptitude" (click)="irAplicante()">
-        <div>
-          <h3>Nombre</h3>
-          <p>Mi lenguaje favorito es Forth, eso de que funcione como una pila es impresionante.</p>
-        </div>
-      </button>
-      <div class="trash">
-        <ion-buttons>
-          <ion-icon name="trash"></ion-icon>
-        </ion-buttons>
-      </div>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
+<ion-list style="border-bottom: none;  box-shadow: none; ">
     <div *ngFor="let item of usuarios">
       <div *ngIf="proyecto.aplicantes.indexOf(item.key) != -1">
-        <ion-item text-wrap>
-          <button ion-item class="nameAptitude" (click)="irAplicante(item)">
-            <div>
-              <h3>{{item.nombre}}</h3>
-              <p>{{item.aptitudes}}</p>
+        <ion-item text-wrap >
+          <div class="container">
+            <button ion-item no-lines class="nameAptitude" (click)="irAplicante(item)" >
+              <div>
+                <h3>{{item.nombre}}</h3>
+                <p>{{item.aptitudes.substring(0,100) + "..."}}</p>
+              </div>
+            </button>
+            <div class="trash">
+              <ion-buttons>
+                <ion-icon name="trash"></ion-icon>
+              </ion-buttons>
             </div>
-          </button>
-          <div class="trash">
-            <ion-buttons>
-              <ion-icon name="trash"></ion-icon>
-            </ion-buttons>
-          </div>
+        </div>
         </ion-item>
       </div>
     </div>

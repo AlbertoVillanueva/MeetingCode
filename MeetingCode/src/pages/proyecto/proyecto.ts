@@ -57,6 +57,15 @@ export class ProyectoPage {
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
+  descolaborar() {
+    let indice = this.proyecto.colaboradores.indexOf(this.auth.getUid());
+    if(indice != -1) {
+      this.proyecto.colaboradores.splice(indice,1);
+    }
+    
+    this.dbFirebase.actualizaProyecto(this.proyecto);
+  }
+
   irALogin() {
     this.navCtrl.push("LoginPage");
   }

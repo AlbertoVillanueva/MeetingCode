@@ -26,4 +26,11 @@ export class AplicantePage {
     console.log('ionViewDidLoad AplicantePage');
   }
 
+  seleccionar() {
+    /*Añadir alert box de confirmación*/
+    this.navCtrl.getPrevious().data.user = this.usuario.key;
+    this.navCtrl.getPrevious().data.operation = 'seleccionar';
+    this.navCtrl.pop();
+  }
+
 }

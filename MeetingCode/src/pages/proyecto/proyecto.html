@@ -24,13 +24,18 @@
   <div *ngIf="auth.authenticated;then content else other_content"></div>
   <ng-template #content>
     <div *ngIf="proyecto.creadorID != auth.getEmail()">
-      <div *ngIf="proyecto.aplicantes.indexOf(auth.getUid()) == -1; then content1 else content2"></div>
+      <div *ngIf="(proyecto.aplicantes.indexOf(auth.getUid()) == -1 && proyecto.colaboradores.indexOf(auth.getUid())) == -1; then content1 else content2"></div>
       <ng-template #content1>
         <button ion-button full type="submit" class="buttonApply" (click)="addAplicante()">Aplicar</button>
       </ng-template>
 
       <ng-template #content2>
-        <button ion-button full type="submit" class="buttonApply" (click)="desaplicar()">Eliminar aplicación</button>
+        <div *ngIf="proyecto.aplicantes.indexOf(auth.getUid()) != -1">
+          <button ion-button full type="submit" class="buttonApply" (click)="desaplicar()">Eliminar aplicación</button>
+        </div>
+        <div *ngIf="proyecto.colaboradores.indexOf(auth.getUid()) != -1">
+          <button ion-button full type="submit" class="buttonApply" (click)="descolaborar()">Eliminar colaboración</button>
+        </div>
       </ng-template>
     </div>
   </ng-template>

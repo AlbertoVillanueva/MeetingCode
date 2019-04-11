@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
 import { Proyecto } from '../../models/proyecto.model';
-import { Usuario } from '../../models/usuario.model';
 
 /**
  * Generated class for the ListaAplicantesPage page.
@@ -19,6 +18,10 @@ import { Usuario } from '../../models/usuario.model';
 export class ListaAplicantesPage {
   proyecto:Proyecto;
   usuarios:any;
+
+  /*Parametros de pop*/
+  user:String;
+  operation:String;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider) {
     this.proyecto = new Proyecto();
@@ -29,8 +32,24 @@ export class ListaAplicantesPage {
     console.log('ionViewDidLoad ListaAplicantesPage');
     this.dbFirebase.getUsuarios().subscribe(listaUsuarios => { this.usuarios = listaUsuarios;});
   }
+  public ionViewWillEnter() {
+    this.user = this.navParams.get('user')|| null;
+    this.operation = this.navParams.get('operation')|| null;
+    console.log("parametros" + this.navParams.data);
+    if(this.operation == 'seleccionar') {
+      this.seleccionarAplicante(this.user);
+    }
+  }
   irAplicante(item){
     this.navCtrl.push("AplicantePage", {item:item});
+  }
+
+  seleccionarAplicante(user) {
+    let indice = this.proyecto.aplicantes.indexOf(user);
+    this.proyecto.aplicantes.splice(indice, 1);
+    this.proyecto.colaboradores.push(user);
+    console.log(this.proyecto);
+    this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
 }

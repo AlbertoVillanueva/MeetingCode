@@ -17,4 +17,16 @@ export class TabsPage {
   constructor() {
 
   }
+
+  tabChanged($ev){
+    if($ev.tabTitle === "Inicio"){
+      $ev.setRoot(HomePage);
+    } else if($ev.tabTitle === "Mis proyectos") {
+      $ev.setRoot(MisProyectosPage);
+    } else if($ev.tabTitle === "Ayuda") {
+      $ev.setRoot(AyudaPage);
+    } else if ($ev.tabTitle === "Buscar"){
+      $ev.setRoot(BusquedaPage);
+    }
+  }
 }

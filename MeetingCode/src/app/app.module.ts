@@ -24,6 +24,8 @@ import { AplicantePage } from '../pages/aplicante/aplicante';
 import { AplicantePageModule } from '../pages/aplicante/aplicante.module';
 import { ListaAplicantesPage } from '../pages/lista-aplicantes/lista-aplicantes';
 import { ListaAplicantesPageModule } from '../pages/lista-aplicantes/lista-aplicantes.module';
+import { ResultadosPageModule } from '../pages/resultados/resultados.module';
+import { ResultadosPage } from '../pages/resultados/resultados';
 
 
 /*https://medium.com/appseed-io/integrating-firebase-password-and-google-authentication-into-your-ionic-3-app-2421cee32db9*/
@@ -56,7 +58,8 @@ export const fireBaseConfig={
     LoginPageModule,
     SignupPageModule,
     AplicantePageModule,
-    ListaAplicantesPageModule
+    ListaAplicantesPageModule,
+    ResultadosPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +72,8 @@ export const fireBaseConfig={
     LoginPage,
     SignupPage,
     AplicantePage,
-    ListaAplicantesPage
+    ListaAplicantesPage,
+    ResultadosPage
   ],
   providers: [
     StatusBar,

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the BusquedaPage page.
+ * Generated class for the ResultadosPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,18 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-busqueda',
-  templateUrl: 'busqueda.html',
+  selector: 'page-resultados',
+  templateUrl: 'resultados.html',
 })
-export class BusquedaPage {
+export class ResultadosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BusquedaPage');
+    console.log('ionViewDidLoad ResultadosPage');
   }
-  irResult(){
-    this.navCtrl.push("ResultadosPage");
-  }
+
 }

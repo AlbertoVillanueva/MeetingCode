@@ -1,3 +1,36 @@
 page-busqueda {
 
 }
+
+.thematicLeft {
+    float: left;
+    width: 45%;
+    height: 20%;
+    border: solid;
+    margin-bottom: 5%;
+    margin-left: 2%;
+}
+
+.thematicRight{
+    float: right;
+    width: 45%;
+    height: 20%;
+    border: solid;
+    margin-bottom: 5%;
+    margin-right: 2%;
+}
+
+.thematicTitle{
+    -webkit-transform: rotate(-20deg); 
+    -moz-transform: rotate(-20deg);
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+}
+.colocacion {
+    margin-left: -2%;
+    font-size: 16px
+}
+.thematicImg{
+    float: right;
+}

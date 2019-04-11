@@ -6,10 +6,22 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Búsqueda</ion-title>
+    <ion-title>Buscar</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
+<ion-toolbar>
+    <ion-searchbar [animated]="true" (change)="irResult()">
+      </ion-searchbar>
+</ion-toolbar>
+<h1>Temáticas</h1>
+
+<button class="thematicLeft"><p class="thematicTitle colocacion">Machine Learning</p><img src="../../assets/imgs/ml.png" class="thematicImg"></button>
+<button class="thematicRight" style="border:solid"><p class="thematicTitle">3D</p>
+<img src="../../assets/imgs/3d.png" class="thematicImg"></button>
+<button class="thematicLeft"><p class="thematicTitle">Linux</p><img src="../../assets/imgs/linux.png" class="thematicImg"></button>
+<button class="thematicRight"><p class="thematicTitle">Móvil</p><img src="../../assets/imgs/movil.png" class="thematicImg"></button>
+<button class="thematicLeft"><p class="thematicTitle">Servidor</p><img src="../../assets/imgs/server.png" class="thematicImg"></button>
+<button class="thematicRight"><p class="thematicTitle">Juegos</p><img src="../../assets/imgs/juegos.png" class="thematicImg"></button>
 
 </ion-content>

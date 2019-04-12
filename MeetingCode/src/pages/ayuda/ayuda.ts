@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Proyecto } from '../../models/proyecto.model';
 import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the AyudaPage page.
@@ -16,8 +17,18 @@ import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
   templateUrl: 'ayuda.html',
 })
 export class AyudaPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider, private alertCtrl: AlertController) {
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+    cameraDirection: 1,
+    correctOrientation: true
+  }
+  clickedImagePath: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public dbFirebase: FirebaseDbProvider, 
+    private alertCtrl: AlertController, private camera: Camera) {
   }
 
 
@@ -70,5 +81,15 @@ export class AyudaPage {
       ]
     });
     return alert.present();
+  }
+
+  clickImage(){
+    this.camera.getPicture(this.options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.clickedImagePath = 'data:image/jpeg;base64,' + imageData;
+     }, (err) => {
+      // Handle error
+     });
   }
 }

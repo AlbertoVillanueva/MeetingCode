@@ -28,6 +28,9 @@
       <ion-list-header>
         <h1>Mis proyectos</h1>
       </ion-list-header>
+      <div class="loading" *ngIf="proyectos==undefined">
+        <ion-spinner center></ion-spinner>
+      </div>
       <div *ngFor="let item of proyectos">
         <button ion-item (click)="irProyecto(item.key)" *ngIf="item.creadorID == auth.getEmail()">
           <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
@@ -43,6 +46,9 @@
       <ion-list-header>
         <h1>Aplicado</h1>
       </ion-list-header>
+      <div class="loading" *ngIf="proyectos==undefined">
+        <ion-spinner center></ion-spinner>
+      </div>
       <div *ngFor="let item of proyectos">
         <button ion-item (click)="irProyecto(item.key)" *ngIf="item.aplicantes.indexOf(auth.getUid()) != -1">
           <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
@@ -58,6 +64,9 @@
       <ion-list-header>
         <h1>Colaborador</h1>
       </ion-list-header>
+      <div class="loading" *ngIf="proyectos==undefined">
+        <ion-spinner center></ion-spinner>
+      </div>
       <div *ngFor="let item of proyectos">
         <button ion-item (click)="irProyecto(item.key)" *ngIf="item.colaboradores.indexOf(auth.getUid()) != -1">
           <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>

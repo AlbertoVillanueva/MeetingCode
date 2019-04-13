@@ -11,10 +11,21 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>{{usuario.nombre}}</h2>
-  <img class="stars"
-    src="https://www.bebesyreciennacidos.com/wp-content/uploads/2016/08/Evaluaciones_de_45_estrellas.png" class="stars">
-  <p>{{usuario.aptitudes}}</p>
+  <div class="encabezado">
+    <img class="fotoPerfil" src="{{usuario.foto}}" />
+    <h2>{{usuario.nombre}}</h2>
+    <img class="stars"
+      src="https://www.bebesyreciennacidos.com/wp-content/uploads/2016/08/Evaluaciones_de_45_estrellas.png"
+      class="stars">
+  </div>
+
+
+
+  <ion-item text-wrap>
+    <ion-label>{{usuario.aptitudes}}</ion-label>
+  </ion-item>
+
+
 
 </ion-content>
 <ion-footer>

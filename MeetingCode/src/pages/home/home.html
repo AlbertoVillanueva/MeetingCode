@@ -4,6 +4,7 @@
   </ion-navbar>
   <ion-item>
     <div *ngIf="auth.getEmail()">{{auth.getEmail()}}</div>
+    
     <button ion-button color="light" item-end (click)="logout()" *ngIf="auth.authenticated">
       <ion-icon name="log-out" item-left></ion-icon>
       Log out
@@ -22,6 +23,9 @@
     <ion-list-header>
       <h1>Juegos</h1>
     </ion-list-header>
+    <div class="loading" *ngIf="proyectos==undefined">
+      <ion-spinner center></ion-spinner>
+    </div>
     <div *ngFor="let item of proyectos">
       <button ion-item *ngIf="item.tipo=='Games'" (click)="irProyecto(item.key)">
         <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>
@@ -36,6 +40,9 @@
     <ion-list-header>
       <h1>Machine Learning</h1>
     </ion-list-header>
+    <div class="loading" *ngIf="proyectos==undefined">
+        <ion-spinner center></ion-spinner>
+      </div>
     <div *ngFor="let item of proyectos">
       <button ion-item *ngIf="item.tipo=='ML'" (click)="irProyecto(item.key)">
         <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>

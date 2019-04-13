@@ -6,7 +6,7 @@
 
 <ion-content>
 
-	<form (ngSubmit)="signup()" [formGroup]="form">
+	<form [formGroup]="form">
 		<ion-list inset>
 
 			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
@@ -41,12 +41,28 @@
 			<div ngxErrors="aptitudes">
 				<div [ngxError]="['required']" [when]="['touched']">Debe incluir una descripción con sus aptitudes</div>
 			</div>
+
+			<ion-item>
+				<p>¿Quieres incluir una foto en un perfil?</p>
+				<div class="divFormFoto">
+					<!-- <img class="fotoPerfil" [src]="clickedImagePath"></ion-img> -->
+					<div *ngIf="clickedImagePath != 'default'; then fotoPerfil else fotoDefault"></div>
+					<ng-template #fotoPerfil>
+						<img class="fotoPerfil1" src="data:image/jpeg;base64,{{clickedImagePath}}" />
+					</ng-template>
+					<ng-template #fotoDefault>
+						<img class="fotoDefault" src="../../assets/imgs/default-user.png" />
+					</ng-template>
+					<button ion-button class="botonFoto" (click)="clickImage()">Hacer foto!</button>
+				</div>
+			</ion-item>
+
 		</ion-list>
 
 		<div padding-horizontal>
 			<div class="form-error">{{signupError}}</div>
 
-			<button ion-button full type="submit" [disabled]="!form.valid">Registrarse</button>
+			<button ion-button full type="submit" [disabled]="!form.valid" (click)="signup()">Registrarse</button>
 		</div>
 	</form>
 </ion-content>

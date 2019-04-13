@@ -9,5 +9,22 @@ page-aplicante {
     
 }
 .stars{
-    width: 60%;
+    width: 50%;
 }
+
+.fotoPerfil {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    float: left;
+    border-radius: 100%;
+    margin-right: 15px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.encabezado {
+    overflow:hidden;
+    margin-bottom: 10px;
+}
+

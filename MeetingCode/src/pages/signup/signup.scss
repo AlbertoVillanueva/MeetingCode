@@ -1,3 +1,26 @@
 page-signup {
 
 }
+
+.fotoDefault {
+    width: 25%;
+    margin-top: 10px;
+}
+
+.fotoPerfil1{
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+.botonFoto {
+    margin-left: 20px;
+}
+
+.divFormFoto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}

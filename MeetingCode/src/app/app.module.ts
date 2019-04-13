@@ -27,7 +27,7 @@ import { ListaAplicantesPageModule } from '../pages/lista-aplicantes/lista-aplic
 import { ResultadosPageModule } from '../pages/resultados/resultados.module';
 import { ResultadosPage } from '../pages/resultados/resultados';
 import { Camera } from '@ionic-native/camera';
-
+import 'firebase/storage';
 /*https://medium.com/appseed-io/integrating-firebase-password-and-google-authentication-into-your-ionic-3-app-2421cee32db9*/
 
 

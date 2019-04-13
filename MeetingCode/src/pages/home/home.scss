@@ -8,6 +8,11 @@ ion-content{
 
 }
 
+ion-navbar {
+    //margin-top: 20px;
+    text-align: center;
+}
+
 ion-avatar img{
     width: 70px !important; 
     height: 70px !important;
@@ -15,4 +20,11 @@ ion-avatar img{
 
 ion-label{
     text-overflow: ellipsis;
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

@@ -16,7 +16,8 @@
 			</ion-item>
 
 			<div ngxErrors="email" #emailErrors="ngxErrors">
-				<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Debe ser un email valido, ejemplo: ejemplo@gmail.com</div>
+				<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Debe ser un email valido, ejemplo:
+					ejemplo@gmail.com</div>
 			</div>
 
 			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
@@ -24,7 +25,8 @@
 			</ion-item>
 
 			<div ngxErrors="password" #passwordErrors="ngxErrors">
-				<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como mínimo 6 caracteres</div>
+				<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como mínimo 6
+					caracteres</div>
 			</div>
 		</ion-list>
 
@@ -40,12 +42,6 @@
 			</div>
 
 			<ion-list>
-
-				<button ion-button icon-left block clear (click)="loginWithGoogle()">
-					<ion-icon name="logo-google"></ion-icon>
-					Log in con Google
-				</button>
-
 				<button ion-button icon-left block clear (click)="goSignup()">
 					<ion-icon name="person-add"></ion-icon>
 					Registrarse

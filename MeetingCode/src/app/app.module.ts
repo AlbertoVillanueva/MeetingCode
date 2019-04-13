@@ -26,8 +26,8 @@ import { ListaAplicantesPage } from '../pages/lista-aplicantes/lista-aplicantes'
 import { ListaAplicantesPageModule } from '../pages/lista-aplicantes/lista-aplicantes.module';
 import { ResultadosPageModule } from '../pages/resultados/resultados.module';
 import { ResultadosPage } from '../pages/resultados/resultados';
-
-
+import { Camera } from '@ionic-native/camera';
+import 'firebase/storage';
 /*https://medium.com/appseed-io/integrating-firebase-password-and-google-authentication-into-your-ionic-3-app-2421cee32db9*/
 
 
@@ -81,7 +81,8 @@ export const fireBaseConfig={
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseDbProvider,
     AngularFireAuth,
-    AuthService
+    AuthService,
+    Camera
   ]
 })
 export class AppModule {}

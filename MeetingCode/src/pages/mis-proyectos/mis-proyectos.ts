@@ -17,11 +17,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MisProyectosPage {
   proyectos: any;
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
   }
 
-    
   irProyecto(key) {
     this.navCtrl.push("ProyectoPage", {
       key: key

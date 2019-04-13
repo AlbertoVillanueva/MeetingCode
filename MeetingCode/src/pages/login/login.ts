@@ -41,16 +41,8 @@ export class LoginPage {
         error => this.loginError = error.message
       );
   }
-  goSignup(){
+  goSignup() {
     this.navCtrl.push(SignupPage);
   }
-  /*
-  loginWithGoogle() {
-    this.auth.signInWithGoogle()
-      .then(
-        () => this.navCtrl.setRoot(HomePage),
-        error => console.log(error.message)
-      );
-  }*/
 
 }

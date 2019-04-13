@@ -19,9 +19,20 @@ export class AuthService {
             credentials.password);
     }
 
-    signUp(credentials, usuario) {
+    signUp(credentials, usuario, foto) {
         return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password).then(
-            () => {usuario.key =  this.afAuth.auth.currentUser.uid; this.dbFirebase.guardaUsuario(usuario)}
+            () => {usuario.key =  this.afAuth.auth.currentUser.uid; 
+                if(foto == "default"){
+                    usuario.foto = "https://www.uic.mx/posgrados/files/2018/05/default-user.png";
+                    this.dbFirebase.guardaUsuario(usuario);
+                } else {
+                    let reference = firebase.storage().ref(usuario.key);
+                    reference.putString(foto, 'base64').then(
+                    () => reference.getDownloadURL().then((url) => {
+                        usuario.foto = url;}).then(() => this.dbFirebase.guardaUsuario(usuario)))
+                }
+                
+            }
         );
     }
     get authenticated(): boolean {
@@ -39,31 +50,4 @@ export class AuthService {
     signOut(): Promise<void> {
         return this.afAuth.auth.signOut();
     }
-
-    /*
-    signInWithGoogle() {
-        console.log('Sign in with google');
-        return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
-    }
-    
-    private oauthSignIn(provider: AuthProvider) {
-        if (!(<any>window).cordova) {
-            return this.afAuth.auth.signInWithPopup(provider);
-        } else {
-            return this.afAuth.auth.signInWithRedirect(provider)
-                .then(() => {
-                    return this.afAuth.auth.getRedirectResult().then(result => {
-                        // This gives you a Google Access Token.
-                        // You can use it to access the Google API.
-                        let token =  (<any>result).credential.accessToken;
-                        // The signed-in user info.
-                        let user = result.user;
-                        console.log(token, user);
-                    }).catch(function (error) {
-                        // Handle Errors here.
-                        alert(error.message);
-                    });
-                });
-        }
-    }*/
 }

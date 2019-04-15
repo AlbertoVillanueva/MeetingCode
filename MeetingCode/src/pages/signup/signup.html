@@ -1,11 +1,18 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar color="verdeClaro">
 		<ion-title>Registro</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content>
-
+	<div style="height:130px">
+		<div class="logoApp">
+			<img src="https://i.imgur.com/wkFqL4H.png">
+		</div>
+		<div class="titleSingUp">
+			<h1>MeetingCode</h1>
+		</div>
+	</div>
 	<form [formGroup]="form">
 		<ion-list inset>
 
@@ -53,7 +60,7 @@
 					<ng-template #fotoDefault>
 						<img class="fotoDefault" src="../../assets/imgs/default-user.png" />
 					</ng-template>
-					<button ion-button class="botonFoto" (click)="clickImage()">Hacer foto!</button>
+					<button ion-button class="botonFoto" (click)="clickImage()" color="verdeClaro">Hacer foto!</button>
 				</div>
 			</ion-item>
 
@@ -62,7 +69,7 @@
 		<div padding-horizontal>
 			<div class="form-error">{{signupError}}</div>
 
-			<button ion-button full type="submit" [disabled]="!form.valid" (click)="signup()">Registrarse</button>
+			<button ion-button full type="submit" [disabled]="!form.valid" (click)="signup()" color="verdeClaro">Registrarse</button>
 		</div>
 	</form>
 </ion-content>

@@ -2,6 +2,7 @@ page-proyecto {
 
 }
 .logoProyecto{
+    margin-top: 12px;
     width: 25%;
     float: left;
 }
@@ -10,8 +11,12 @@ page-proyecto {
     margin-left: 100px;
 }
 .parrafoDescripcion{
-    padding-left: 5px;
-    text-align: justify
+    margin-top: 25px;
+    text-align: justify;
+    background-color: #d8eebe;
+    padding: 5px;
+    border: solid;
+    border-color: color($colors,verdeClaro)
 }
 .buttonApply{
     width: 75%;

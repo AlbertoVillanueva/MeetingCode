@@ -5,19 +5,40 @@ page-busqueda {
 .thematicLeft {
     float: left;
     width: 45%;
-    height: 20%;
-    border: solid;
+    height: 80px;
     margin-bottom: 5%;
     margin-left: 2%;
+    color: white;
+    background-color: color($colors,light);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
 }
 
 .thematicRight{
-    float: right;
+    float: left;
     width: 45%;
-    height: 20%;
-    border: solid;
+    height: 80px;
     margin-bottom: 5%;
-    margin-right: 2%;
+    margin-left: 2%;
+    color: white;
+    background-color: color($colors,light);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.thematicLeft:active, .thematicRight:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .thematicTitle{

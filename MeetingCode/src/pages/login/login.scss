@@ -2,6 +2,15 @@ page-login {
 
 }
 
-.middleLog{
-    padding-top: 20%
+.titleLogin{
+    float: left;
+    width: 50%;
+    margin-top: 10%;
+    margin-left: -5%;
+    color: color($colors,verdeClaro);
+    font-style: italic;
+}
+.logoApp{
+    float: left;
+    width: 50%;
 }

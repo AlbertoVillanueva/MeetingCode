@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="verdeClaro">
     <ion-title>Proyecto</ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,7 +11,7 @@
       <div *ngIf="proyecto.creadorID == auth.getEmail(); then creador else otro"></div>
       <ng-template #creador>
         <button ion-button type="submit" class="buttonApply"
-          (click)="irAListaAplicantes(proyecto.key)">Aplicantes</button>
+          (click)="irAListaAplicantes(proyecto.key)" color="verdeClaro">Aplicantes</button>
       </ng-template>
       <ng-template #otro>
         <p>{{proyecto.creador}}</p>
@@ -32,23 +32,23 @@
           *ngIf="(proyecto.aplicantes.indexOf(auth.getUid()) == -1 && proyecto.colaboradores.indexOf(auth.getUid())) == -1; then content1 else content2">
         </div>
         <ng-template #content1>
-          <button ion-button full type="submit" class="buttonApply" (click)="addAplicante()">Aplicar</button>
+          <button ion-button full type="submit" class="buttonApply" (click)="addAplicante()" color="verdeClaro">Aplicar</button>
         </ng-template>
 
         <ng-template #content2>
           <div *ngIf="proyecto.aplicantes.indexOf(auth.getUid()) != -1">
-            <button ion-button full type="submit" class="buttonApply" (click)="desaplicar()">Eliminar
+            <button ion-button full type="submit" class="buttonApply" (click)="desaplicar()" color="verdeClaro">Eliminar
               aplicación</button>
           </div>
           <div *ngIf="proyecto.colaboradores.indexOf(auth.getUid()) != -1">
-            <button ion-button full type="submit" class="buttonApply" (click)="descolaborar()">Eliminar
+            <button ion-button full type="submit" class="buttonApply" (click)="descolaborar()" color="verdeClaro">Eliminar
               colaboración</button>
           </div>
         </ng-template>
       </div>
     </ng-template>
     <ng-template #other_content>
-      <button ion-button full type="submit" class="buttonApply" (click)="irALogin()">Iniciar sesion para
+      <button ion-button full type="submit" class="buttonApply" (click)="irALogin()" color="verdeClaro">Iniciar sesion para
         aplicar</button>
     </ng-template>
   </div>

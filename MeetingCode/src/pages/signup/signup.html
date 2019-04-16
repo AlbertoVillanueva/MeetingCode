@@ -5,71 +5,78 @@
 </ion-header>
 
 <ion-content>
-	<div style="height:130px">
-		<div class="logoApp">
-			<img src="https://i.imgur.com/wkFqL4H.png">
+	<div id="logoTitle">
+		<div id="logoApp">
+			<img src="https://i.imgur.com/0aud4lg.png">
 		</div>
-		<div class="titleSingUp">
+		<div id="titleSignUp">
 			<h1>MeetingCode</h1>
 		</div>
 	</div>
-	<form [formGroup]="form">
-		<ion-list inset>
+	<div id="form">
+		<form [formGroup]="form">
+			<ion-list inset>
 
-			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
-				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-			</ion-item>
+				<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
+					<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+				</ion-item>
 
-			<div ngxErrors="email" #emailErrors="ngxErrors">
-				<div [ngxError]="['email', 'required']" [when]="['touched']">Debe ser un email valido, ejemplo:
-					ejemplo@gmail.com</div>
-			</div>
-
-			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
-				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-			</ion-item>
-
-			<div ngxErrors="password" #passwordErrors="ngxErrors">
-				<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como mínimo 6
-					caracteres</div>
-			</div>
-
-			<ion-item>
-				<ion-input type="text" placeholder="Nombre" formControlName="nombre"></ion-input>
-			</ion-item>
-			<div ngxErrors="nombre">
-				<div [ngxError]="['required']" [when]="['touched']">Debe indicar un nombre para el registro</div>
-			</div>
-
-			<ion-item>
-				<ion-textarea type="text" placeholder="¿Cuáles son tus aptitudes?" formControlName="aptitudes"
-					size="40"></ion-textarea>
-			</ion-item>
-			<div ngxErrors="aptitudes">
-				<div [ngxError]="['required']" [when]="['touched']">Debe incluir una descripción con sus aptitudes</div>
-			</div>
-
-			<ion-item>
-				<p>¿Quieres incluir una foto en un perfil?</p>
-				<div class="divFormFoto">
-					<!-- <img class="fotoPerfil" [src]="clickedImagePath"></ion-img> -->
-					<div *ngIf="clickedImagePath != 'default'; then fotoPerfil else fotoDefault"></div>
-					<ng-template #fotoPerfil>
-						<img class="fotoPerfil1" src="data:image/jpeg;base64,{{clickedImagePath}}" />
-					</ng-template>
-					<ng-template #fotoDefault>
-						<img class="fotoDefault" src="../../assets/imgs/default-user.png" />
-					</ng-template>
-					<button ion-button class="botonFoto" (click)="clickImage()" color="verdeClaro">Hacer foto!</button>
+				<div ngxErrors="email" #emailErrors="ngxErrors">
+					<div [ngxError]="['email', 'required']" [when]="['touched']">Debe ser un email valido, ejemplo:
+						ejemplo@gmail.com</div>
 				</div>
-			</ion-item>
 
-		</ion-list>
+				<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+					<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+				</ion-item>
 
-		<div padding-horizontal>
-			<div class="form-error">{{signupError}}</div>
+				<div ngxErrors="password" #passwordErrors="ngxErrors">
+					<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como
+						mínimo 6
+						caracteres</div>
+				</div>
 
-			<button ion-button full type="submit" [disabled]="!form.valid" (click)="signup()" color="verdeClaro">Registrarse</button>
-		</div>
-	</form>
+				<ion-item>
+					<ion-input type="text" placeholder="Nombre" formControlName="nombre"></ion-input>
+				</ion-item>
+				<div ngxErrors="nombre">
+					<div [ngxError]="['required']" [when]="['touched']">Debe indicar un nombre para el registro</div>
+				</div>
+
+				<ion-item>
+					<ion-textarea type="text" placeholder="¿Cuáles son tus aptitudes?" formControlName="aptitudes"
+						size="40"></ion-textarea>
+				</ion-item>
+				<div ngxErrors="aptitudes">
+					<div [ngxError]="['required']" [when]="['touched']">Debe incluir una descripción con sus aptitudes
+					</div>
+				</div>
+
+				<ion-item>
+					<p>¿Quieres incluir una foto en un perfil?</p>
+					<div class="divFormFoto">
+						<!-- <img class="fotoPerfil" [src]="clickedImagePath"></ion-img> -->
+						<div *ngIf="clickedImagePath != 'default'; then fotoPerfil else fotoDefault"></div>
+						<ng-template #fotoPerfil>
+							<img class="fotoPerfil1" src="data:image/jpeg;base64,{{clickedImagePath}}" />
+						</ng-template>
+						<ng-template #fotoDefault>
+							<img class="fotoDefault" src="../../assets/imgs/default-user.png" />
+						</ng-template>
+						<button ion-button class="botonFoto" (click)="clickImage()" color="verdeClaro">Hacer
+							foto!</button>
+					</div>
+				</ion-item>
+
+			</ion-list>
+
+			<div padding-horizontal>
+				<div class="form-error">{{signupError}}</div>
+
+				<button ion-button full type="submit" [disabled]="!form.valid" (click)="signup()"
+					color="verdeClaro">Registrarse</button>
+			</div>
+		</form>
+	</div>
+
 </ion-content>

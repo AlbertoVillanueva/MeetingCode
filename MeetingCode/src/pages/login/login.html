@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
 	<ion-navbar color="verdeClaro">
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
@@ -8,53 +8,58 @@
 </ion-header>
 
 <ion-content>
-	<div style="height:130px">
-		<div class="logoApp">
-			<img src="https://i.imgur.com/wkFqL4H.png">
+	<div id="logoTitle">
+		<div id="logoApp">
+			<img src="https://i.imgur.com/0aud4lg.png">
 		</div>
-		<div class="titleLogin">
+		<div id="titleLogin">
 			<h1>MeetingCode</h1>
 		</div>
 	</div>
-	<form (ngSubmit)="login()" [formGroup]="loginForm">
-		<ion-list inset>
+	<div class="form">
+		<form (ngSubmit)="login()" [formGroup]="loginForm">
+			<ion-list inset>
 
-			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
-				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-			</ion-item>
+				<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
+					<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+				</ion-item>
 
-			<div ngxErrors="email" #emailErrors="ngxErrors">
-				<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Debe ser un email valido, ejemplo:
-					ejemplo@gmail.com</div>
-			</div>
+				<div ngxErrors="email" #emailErrors="ngxErrors">
+					<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Debe ser un email valido,
+						ejemplo:
+						ejemplo@gmail.com</div>
+				</div>
 
-			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
-				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-			</ion-item>
+				<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+					<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+				</ion-item>
 
-			<div ngxErrors="password" #passwordErrors="ngxErrors">
-				<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como mínimo 6
-					caracteres</div>
-			</div>
-		</ion-list>
-
-		<div padding-horizontal>
-			<div class="form-error">{{loginError}}</div>
-
-			<button ion-button full type="submit" [disabled]="!loginForm.valid" color="verdeClaro">Log in</button>
-			<div class="login-footer">
-				<p>
-					<a href="#"style="color: #a7d86d">¿Olvidaste la contraseña?</a>
-					Si eres nuevo, por favor registrate.
-				</p>
-			</div>
-
-			<ion-list>
-				<button ion-button icon-left block clear (click)="goSignup()" color="verdeClaro">
-					<ion-icon name="person-add"></ion-icon>
-					Registrarse
-				</button>
+				<div ngxErrors="password" #passwordErrors="ngxErrors">
+					<div [ngxError]="['minlength', 'required']" [when]="['touched']">La contraseña debe tener como
+						mínimo 6
+						caracteres</div>
+				</div>
 			</ion-list>
-		</div>
-	</form>
+
+			<div padding-horizontal>
+				<div class="form-error">{{loginError}}</div>
+
+				<button ion-button full type="submit" [disabled]="!loginForm.valid" color="verdeClaro">Log in</button>
+				<div class="login-footer">
+					<p>
+						<a href="#" style="color: #a7d86d">¿Olvidaste la contraseña?</a>
+						Si eres nuevo, por favor registrate.
+					</p>
+				</div>
+
+				<ion-list>
+					<button ion-button icon-left block clear (click)="goSignup()" color="verdeClaro">
+						<ion-icon name="person-add"></ion-icon>
+						Registrarse
+					</button>
+				</ion-list>
+			</div>
+		</form>
+	</div>
+
 </ion-content>

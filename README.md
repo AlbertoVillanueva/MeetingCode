@@ -1,6 +1,6 @@
 # ProyectoDSI
 
-COMANDOS APRA LA INSTALACIÓN DE PAQUETES
+COMANDOS PARA LA INSTALACIÓN DE PAQUETES
 
 En algunos casos, la ejecución del prototipo puede dar error por necesidad de instalación de algún paquete. Por ello, recomendamos realizar la instalación en los siguientes pasos:
 

@@ -29,8 +29,11 @@ sudo npm install
 En algunos casos, puede ser necesaria la ejecucion de los siguientes comandos para eliminar archivos anteriores e instalar una versión compatible de sass.
 
 sudo rm -rf package-lock.json node_modules
+
 sudo npm cache clean -force
+
 sudo npm i --unsafe-perm node-sass
+
 
 
 Después de ejecutar estos pasos, seria necesario volver al paso 2.

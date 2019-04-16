@@ -2,7 +2,7 @@
 
 COMANDOS APRA LA INSTALACIÓN DE PAQUETES
 
-En algunos casos, la ejecución del prototipo puede dar error por necesidad de instalación dela gún paquete. Por ello, recomendamos realizar la instalación en los siguientes pasos:
+En algunos casos, la ejecución del prototipo puede dar error por necesidad de instalación de algún paquete. Por ello, recomendamos realizar la instalación en los siguientes pasos:
 
 1. Git clone del repositorio (sin node_modules) y cd MeetingCode para acceder a la carpeta del código.
 
@@ -11,7 +11,7 @@ En algunos casos, la ejecución del prototipo puede dar error por necesidad de i
 sudo npm install rxjs@6.0.0 -save
 sudo npm install -s rxjs-compat
 
-3. Instalación del paquete de Errores de formularios:
+3. Instalación del paquete de errores de formularios:
 
 sudo npm i @ultimate/ngxerrors
 
@@ -33,4 +33,4 @@ sudo npm cache clean -force
 sudo npm i --unsafe-perm node-sass
 
 
-Despues de ejecutar estos pasos, seria necesario volver al paso 2.
+Después de ejecutar estos pasos, seria necesario volver al paso 2.

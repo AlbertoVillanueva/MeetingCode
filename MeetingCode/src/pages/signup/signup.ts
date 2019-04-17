@@ -25,13 +25,8 @@ export class SignupPage {
 		correctOrientation: true
 	}
 	clickedImagePath: String;
-	
-	constructor(
-		fb: FormBuilder,
-		private navCtrl: NavController,
-		private auth: AuthService,
-		public dbFirebase: FirebaseDbProvider, private camera: Camera
-	) {
+
+	constructor(fb: FormBuilder, private navCtrl: NavController, private auth: AuthService,	public dbFirebase: FirebaseDbProvider, private camera: Camera) {
 		this.form = fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -52,7 +47,7 @@ export class SignupPage {
 
 		usuario.nombre = data.nombre;
 		usuario.aptitudes = data.aptitudes;
-		
+
 		this.auth.signUp(credentials, usuario, this.clickedImagePath).then(
 			() => this.navCtrl.setRoot(HomePage),
 			error => this.signupError = error.message

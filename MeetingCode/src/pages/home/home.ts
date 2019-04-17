@@ -11,6 +11,10 @@ export class HomePage {
 
   proyectos: any;
 
+  /**
+   * Se obtiene la lista de proyectos mediante un subscribe, cualquier cambio afecta a la página de inicio
+   * y se ven los cambios en tiempo real
+   */
   constructor(public navCtrl: NavController, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
     this.dbFirebase.getProyectos().subscribe(listaProyectos => { this.proyectos = listaProyectos; });
   }

@@ -25,7 +25,8 @@ export class AyudaPage {
 
   private texto = "Ahora, un equipo de investigadores de diversas instituciones, entre ellas las universidades de Nueva York y Ottawa (Canadá), descubrio un problema en la vida cotidiana de muchas personas en sus respectivas ciudades por lo que quieren desarrollar un sistema que a través de clasificación permita la creación de robots que faciliten la vida de esta personas en función de sus características, ya que el robot se adaptará a la persona.";
 
-
+  /*FUNCION DEBUG*/
+  /*Array de proyectos de ejemplo, se cargan mediante un boton que aparece en la pagiina de ayuda*/
   proyectosPreCarga: Proyecto[] = [{ "nombre": "Pacman", "foto": "https://i.imgur.com/6QZ8sqr.png", "descripcion": "Somos un equipo de investigación que está buscando gente para llevar a cabo un proyecto relacionado con pacman. En un principio se buscaque por medio del aprendizaje automático el pacman sea capaz de resolver la situación del juego. Para ello se necesita gente con ambición,con conocimiento en machine learning, con ganas de aprender y que sepa trabajar en equipo, ya que tan solo no buscamos a una persona sino a varias que puedan llegar a colaborar.", "creador": "Paco", "tipo": "ML", "creadorID": "creador@gmail.com" },
   { "nombre": "Pacman Refuerzo", "foto": "https://i.imgur.com/YZ7mDQ5.png", "descripcion": "Un equipo de desarrolladores que necesita a una persona para completar su equipo con el objetivo de llevar a cabo un proyecto de aprendizaje por refuerzo para el juego del pacman. Se busca una persona con conocimientos en machine learnig, que sepa varios lenguajes de programación (como mínimo python y C) y que sepa trabajar en equipo y este dispuesto a trabajar lejos de casa ya que se tendría que desplazar a otro pais.", "creador": "Paco", "tipo": "ML", "creadorID": "creador@gmail.com" },
   { "nombre": "Clasificacion sencilla", "foto": "https://i.imgur.com/L3ckCwK.png", "descripcion": this.texto, "creador": "Paco", "tipo": "ML", "creadorID": "creador@gmail.com" },
@@ -38,6 +39,10 @@ export class AyudaPage {
     console.log('ionViewDidLoad AyudaPage');
   }
 
+  /**
+   * Funcion para reiniciar los proyectos que hay en firebase
+   * Simplemente se borran los que hay y se suben de nuevo
+   */
   onAddProject() {
     let alert = this.alertCtrl.create({
       title: 'Reiniciar Proyectos',

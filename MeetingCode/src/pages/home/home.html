@@ -18,7 +18,7 @@
 
 
 <ion-content padding>
-  <!-- List of Text Items -->
+  <!-- Mientras los proyectos no se hayan cargado, aparece un circulo de carga -->
   <ion-list>
     <ion-list-header>
       <h1>Juegos</h1>
@@ -26,6 +26,7 @@
     <div class="loading" *ngIf="proyectos==undefined">
       <ion-spinner center></ion-spinner>
     </div>
+    <!-- Se muestran los proyectos recorriendo la lista y filtrando por el tipo -->
     <div *ngFor="let item of proyectos">
       <button ion-item *ngIf="item.tipo=='Games'" (click)="irProyecto(item.key)">
         <ion-avatar item-left><img class="projectLogo" src="{{item.foto}}"></ion-avatar>

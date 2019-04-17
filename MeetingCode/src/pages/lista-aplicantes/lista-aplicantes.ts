@@ -20,10 +20,16 @@ export class ListaAplicantesPage {
   usuarios: any;
   private observable: any;
 
-  /*Parametros de pop*/
+  /**
+   * Parametros para que nos devuelvan el user que hay que seleccionar.
+   * Hacerlo así evitar tener que tener en la página del aplicante los subscribe y la lista de proyectos y usuarios.
+   */
   user: String;
   operation: String;
-
+  /**
+   * Nos subscribimos a la lista de usuarios, así aparecen cambios en los usuarios en tiempo real
+   * Tambien subscribimos a un objeto proyecto, concretamente solo al de la lista de aplicantes involucrada
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider, private alertCtrl: AlertController) {
     this.dbFirebase.getUsuarios().subscribe(listaUsuarios => { this.usuarios = listaUsuarios; });
     let key = navParams.get('key');
@@ -37,6 +43,10 @@ export class ListaAplicantesPage {
     console.log('ionViewDidLoad ListaAplicantesPage');
   }
 
+  /**
+   * Cuando entremos en la pagina, si hemos recibido parametros, significa que hemos seleccionado un aplicante, 
+   * por lo que llamamos a la funcion
+   */
   public ionViewWillEnter() {
     this.user = this.navParams.get('user') || null;
 
@@ -48,6 +58,10 @@ export class ListaAplicantesPage {
     this.navCtrl.push("AplicantePage", { item: item });
   }
 
+  /**
+   * Al seleccionar un aplicante, lo borramos de la lista de aplicantes y se añade a la lista
+   * de colaboradores, despues se llama a una funcion del servicio para actualizar el proyecto.
+   */
   seleccionarAplicante(user) {
     let indice = this.proyecto.aplicantes.indexOf(user);
     this.proyecto.aplicantes.splice(indice, 1);
@@ -56,6 +70,9 @@ export class ListaAplicantesPage {
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
+  /**
+   * En caso de pulsar en borrar aplicante, utilizamos esta funcion. Tambien con AlertBox
+   */
   desaplicar(key) {
     let alert = this.alertCtrl.create({
       title: 'Descartar aplicante',
@@ -74,7 +91,6 @@ export class ListaAplicantesPage {
             if (indice != -1) {
               this.proyecto.aplicantes.splice(indice, 1);
             }
-
             this.dbFirebase.actualizaProyecto(this.proyecto);
           }
         }

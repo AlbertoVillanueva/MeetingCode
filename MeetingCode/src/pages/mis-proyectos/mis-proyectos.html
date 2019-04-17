@@ -21,8 +21,10 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- List of Text Items -->
+  <!-- Si no estoy autenticado, voy al apartado que indica iniciar sesion -->
   <div *ngIf="auth.authenticated; then content else otherContent"></div>
+  <!-- Si estoy autenticado, muestro proyectos propios por CreadorID (UID del user),
+  en los que aparezca como aplicante y colaborador -->
   <ng-template #content>
     <ion-list>
       <ion-list-header>

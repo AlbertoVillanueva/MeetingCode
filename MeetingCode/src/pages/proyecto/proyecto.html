@@ -25,8 +25,10 @@
 </ion-content>
 <ion-footer>
   <div *ngIf="proyecto != undefined">
+    <!-- Hay diferentes opciones -->
     <div *ngIf="auth.authenticated;then content else other_content"></div>
     <ng-template #content>
+      <!-- Autenticado, no creador, no aplicante y no colaborador, aparece boton de aplicar -->
       <div *ngIf="proyecto.creadorID != auth.getEmail()">
         <div
           *ngIf="(proyecto.aplicantes.indexOf(auth.getUid()) == -1 && proyecto.colaboradores.indexOf(auth.getUid())) == -1; then content1 else content2">
@@ -36,10 +38,12 @@
         </ng-template>
 
         <ng-template #content2>
+          <!-- Si apareces como aplicante -->
           <div *ngIf="proyecto.aplicantes.indexOf(auth.getUid()) != -1">
             <button ion-button full type="submit" class="buttonApply" (click)="desaplicar()" color="verdeClaro">Eliminar
               aplicación</button>
           </div>
+          <!-- Si apareces como colaborador -->
           <div *ngIf="proyecto.colaboradores.indexOf(auth.getUid()) != -1">
             <button ion-button full type="submit" class="buttonApply" (click)="descolaborar()" color="verdeClaro">Eliminar
               colaboración</button>
@@ -48,6 +52,7 @@
       </div>
     </ng-template>
     <ng-template #other_content>
+      <!-- Si no estas autenticado te da la opcion de iniciar sesion -->
       <button ion-button full type="submit" class="buttonApply" (click)="irALogin()" color="verdeClaro">Iniciar sesion para
         aplicar</button>
     </ng-template>

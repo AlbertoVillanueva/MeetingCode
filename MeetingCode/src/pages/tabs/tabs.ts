@@ -18,6 +18,9 @@ export class TabsPage {
 
   }
 
+  /**
+   * En caso de que se cambie de tab, se vuelve en esa tab a la inicial, dejando la pila vacia.
+   */
   tabChanged($ev){
     if($ev.tabTitle === "Inicio"){
       $ev.setRoot(HomePage);

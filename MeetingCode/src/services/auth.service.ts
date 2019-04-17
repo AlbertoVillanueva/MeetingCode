@@ -19,6 +19,18 @@ export class AuthService {
             credentials.password);
     }
 
+    /**
+     * Cuando se crea la cuenta, se asigna al user key la uid de la cuenta para identificarlo en la base de datos
+     * en caso de que no se haya hecho foto, se pone una foto por defecto pero en caso de hacerse una foto, se toma 
+     * una referencia de firebase storage, donde se va a guardar la foto.
+     * 
+     * Cuando se ha subido, se obtiene el DownloadURL y se asigna al atributo del usuario.
+     * Por ultimo, se guarda el usuario en la base de datos.
+     * 
+     * @param credentials Email y contraseña
+     * @param usuario Objeto del usuario para subirlo a firebase cuando esté registrado
+     * @param foto Foto en base64 que el usuario ha hecho en registro
+     */
     signUp(credentials, usuario, foto) {
         return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password).then(
             () => {usuario.key =  this.afAuth.auth.currentUser.uid; 

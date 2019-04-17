@@ -26,7 +26,12 @@ export class AplicantePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AplicantePage');
   }
-
+  /** 
+   * Funcion que se ejecuta cuando se pulsa en seleccionar un aplicante
+   * Se crea mediante un Alert Box para prevenir errores.
+   * En caso de pulsar en sí, se pasa por parametro a la página anterior 
+   * el UID del user a seleccionar
+   */
   seleccionar() {
     let alert = this.alertCtrl.create({
       title: 'Seleccionar',

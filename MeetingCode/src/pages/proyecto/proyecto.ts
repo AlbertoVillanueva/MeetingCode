@@ -20,6 +20,9 @@ export class ProyectoPage {
   proyecto: Proyecto;
   private observable: any;
 
+  /**
+   * Me subscribo al objeto del proyecto para recibir cambios en tiempo real
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams, public dbFirebase: FirebaseDbProvider, private auth: AuthService) {
     let key = navParams.get('key');
     this.observable = dbFirebase.afDB.object('proyectos/' + key).valueChanges();
@@ -30,6 +33,9 @@ export class ProyectoPage {
     console.log('ionViewDidLoad ProyectoPage');
   }
 
+  /**
+   * Si estas autenticado, se revisa que yta no hayas aplicado y se añade tu id a la lista de aplicantes
+   */
   addAplicante() {
     if (this.auth.authenticated) {
       console.log(this.auth.getEmail());
@@ -44,6 +50,9 @@ export class ProyectoPage {
     }
   }
 
+  /**
+   * Igual que al aplicar, solo que ahora borramos el id de la lista
+   */
   desaplicar() {
     let indice = this.proyecto.aplicantes.indexOf(this.auth.getUid());
     if (indice != -1) {
@@ -53,6 +62,10 @@ export class ProyectoPage {
     this.dbFirebase.actualizaProyecto(this.proyecto);
   }
 
+  /**
+   * Si ya te han aceptado como colaborador, puedes decidir dejar de colaborar
+   * Simplemente se toma el indice de la lista y se borra. Por ultimo se actualiza
+   */
   descolaborar() {
     let indice = this.proyecto.colaboradores.indexOf(this.auth.getUid());
     if (indice != -1) {

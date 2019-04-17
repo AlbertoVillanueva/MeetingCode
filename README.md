@@ -9,6 +9,7 @@ En algunos casos, la ejecución del prototipo puede dar error por necesidad de i
 2. Instalación de una version compatible de rxjs:
 
 sudo npm install rxjs@6.0.0 -save
+
 sudo npm install -s rxjs-compat
 
 3. Instalación del paquete de errores de formularios:

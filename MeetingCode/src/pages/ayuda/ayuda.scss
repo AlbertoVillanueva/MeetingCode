@@ -1,15 +1,28 @@
 page-ayuda {
 
 }
-.titleHelp{
+
+#titleHelp{
     float: left;
-    width: 50%;
-    margin-top: 15%;
-    margin-left: -5%;
     color: color($colors,verdeClaro);
     font-style: italic;
+    display: inline-block;
+    margin-left: 10px; 
 }
-.logoApp{
+#logoApp{
     float: left;
-    width: 50%;
+    width: 100px;
+    display: inline-block;
+}
+
+
+#logoHelp {
+    overflow: hidden;
+    display: flex;
+    /* alineacion vertical */
+    align-items: center;
+    /* alineacion horizontal */
+    justify-content: center;
+    margin-top: 15px;
+  
 }

@@ -64,10 +64,25 @@ export class ListaAplicantesPage {
    */
   seleccionarAplicante(user) {
     let indice = this.proyecto.aplicantes.indexOf(user);
-    this.proyecto.aplicantes.splice(indice, 1);
-    this.proyecto.colaboradores.push(user);
-    console.log(this.proyecto);
-    this.dbFirebase.actualizaProyecto(this.proyecto);
+    if(indice != -1) {
+      this.proyecto.aplicantes.splice(indice, 1);
+      this.proyecto.colaboradores.push(user);
+      console.log(this.proyecto);
+      this.dbFirebase.actualizaProyecto(this.proyecto);
+    } else {
+      console.log("ERROR");
+      let alert = this.alertCtrl.create({
+        title: 'Aplicante desaparecido',
+        message: 'El aplicante ha desaplicado del proyecto',
+        buttons: [
+          {
+            text: 'Ok'
+          }
+        ]
+      });
+      return alert.present();
+    }
+    
   }
 
   /**

@@ -1,4 +1,14 @@
 # ProyectoDSI
+CUENTAS CREADAS PARA LOS CREADORES DE PROYECTOS
+
+Ya que el escenario principal no incluye crear proyecto, existen dos cuentas que tienen asignados proyectos creados. Estas cuentas son:
+
+user: creador@gmail.com
+pass: 123456
+
+user: creador2@gmail.com
+pass: 123456
+
 
 COMANDOS PARA LA INSTALACIÓN DE PAQUETES
 

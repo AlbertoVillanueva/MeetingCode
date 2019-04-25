@@ -69,20 +69,7 @@ export class ListaAplicantesPage {
       this.proyecto.colaboradores.push(user);
       console.log(this.proyecto);
       this.dbFirebase.actualizaProyecto(this.proyecto);
-    } else {
-      console.log("ERROR");
-      let alert = this.alertCtrl.create({
-        title: 'Aplicante desaparecido',
-        message: 'El aplicante ha desaplicado del proyecto',
-        buttons: [
-          {
-            text: 'Ok'
-          }
-        ]
-      });
-      return alert.present();
     }
-    
   }
 
   /**
